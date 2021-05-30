@@ -19,12 +19,13 @@ import (
 	"net"
 	"strings"
 
+	"cni-ipam-etcd/backend/allocator"
+	"cni-ipam-etcd/backend/etcd"
+
 	"github.com/containernetworking/cni/pkg/skel"
 	"github.com/containernetworking/cni/pkg/types"
 	"github.com/containernetworking/cni/pkg/types/current"
 	"github.com/containernetworking/cni/pkg/version"
-	"github.com/jeremyxu2010/cni-ipam-etcd/backend/allocator"
-	"github.com/jeremyxu2010/cni-ipam-etcd/backend/etcd"
 )
 
 func main() {

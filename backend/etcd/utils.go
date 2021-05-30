@@ -28,7 +28,7 @@ func connectStore(etcdConfig *allocator.EtcdConfig) (*clientv3.Client, error) {
 */
 func connectWithoutTLS(url string) (*clientv3.Client, error) {
 	cli, err := clientv3.New(clientv3.Config{
-		Endpoints:   []string{url},
+		Endpoints:   strings.Split(url, ","),
 		DialTimeout: 5 * time.Second,
 	})
 
@@ -48,7 +48,7 @@ func connectWithTLS(url, cert, key, trusted string) (*clientv3.Client, error) {
 	}
 
 	cli, err := clientv3.New(clientv3.Config{
-		Endpoints:   []string{url},
+		Endpoints:   strings.Split(url, ","),
 		DialTimeout: 5 * time.Second,
 		TLS:         tlsConfig,
 	})
