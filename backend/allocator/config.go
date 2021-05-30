@@ -49,7 +49,7 @@ type IPAMConfig struct {
 	Ranges     []RangeSet     `json:"ranges"`
 	IPArgs     []net.IP       `json:"-"` // Requested IPs from CNI_ARGS and args
 	EtcdConfig *EtcdConfig    `json:"etcdConfig"`
-	Gateway2    string      `json:"gateway2,omitempty"`
+	Gateway2   string         `json:"gateway2,omitempty"`
 }
 
 type EtcdConfig struct {
@@ -105,7 +105,7 @@ func LoadIPAMConfig(bytes []byte, envArgs string) (*IPAMConfig, string, error) {
 		n.IPAM.IPArgs = append(n.IPAM.IPArgs, n.Args.A.IPs...)
 	}
 
-	for idx, _ := range n.IPAM.IPArgs {
+	for idx := range n.IPAM.IPArgs {
 		if err := canonicalizeIP(&n.IPAM.IPArgs[idx]); err != nil {
 			return nil, "", fmt.Errorf("cannot understand ip: %v", err)
 		}
@@ -130,7 +130,7 @@ func LoadIPAMConfig(bytes []byte, envArgs string) (*IPAMConfig, string, error) {
 	// Validate all ranges
 	numV4 := 0
 	numV6 := 0
-	for i, _ := range n.IPAM.Ranges {
+	for i := range n.IPAM.Ranges {
 		if err := n.IPAM.Ranges[i].Canonicalize(); err != nil {
 			return nil, "", fmt.Errorf("invalid range set %d: %s", i, err)
 		}

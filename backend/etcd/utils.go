@@ -1,11 +1,13 @@
 package etcd
 
 import (
-	"github.com/coreos/etcd/clientv3"
-	"github.com/coreos/etcd/pkg/transport"
-	"github.com/jeremyxu2010/cni-ipam-etcd/backend/allocator"
 	"strings"
 	"time"
+
+	"cni-ipam-etcd/backend/allocator"
+
+	"github.com/coreos/etcd/clientv3"
+	"github.com/coreos/etcd/pkg/transport"
 )
 
 func connectStore(etcdConfig *allocator.EtcdConfig) (*clientv3.Client, error) {

@@ -22,10 +22,11 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/jeremyxu2010/cni-ipam-etcd/backend/allocator"
+	"cni-ipam-etcd/backend/allocator"
+
+	"cni-ipam-etcd/backend"
 
 	"github.com/coreos/etcd/clientv3"
-	"github.com/jeremyxu2010/cni-ipam-etcd/backend"
 )
 
 const ETCDPrefix string = "/etcd-cni/networks/"
@@ -45,8 +46,8 @@ func New(name string, ipamConfig *allocator.IPAMConfig) (*Store, error) {
 	if err != nil {
 		panic(err)
 	}
-	netConfig, err := netConfigJson(ipamConfig)
-	etcdKeyPrefix, err := initStore(name, netConfig, etcdClient)
+	netConfig, _ := netConfigJson(ipamConfig)
+	etcdKeyPrefix, _ := initStore(name, netConfig, etcdClient)
 	// write values in Store object
 	store := &Store{
 		EtcdClient:    etcdClient,
@@ -103,7 +104,7 @@ func (s *Store) LastReservedIP(rangeID string) (net.IP, error) {
 		return nil, err
 	}
 	if resp.Count == 0 {
-		return nil, errors.New("Can not find last reserved ip")
+		return nil, errors.New("can not find last reserved ip")
 	}
 	data := string(resp.Kvs[0].Value)
 	return net.ParseIP(string(data)), nil
@@ -193,7 +194,7 @@ func (s *Store) Lock() error {
 	if getLock {
 		return nil
 	} else {
-		return errors.New("Can not get lock")
+		return errors.New("can not get lock")
 	}
 }
 

@@ -33,7 +33,7 @@ func (r *Range) Canonicalize() error {
 	// a /32 or /31
 	ones, masklen := r.Subnet.Mask.Size()
 	if ones > masklen-2 {
-		return fmt.Errorf("Network %s too small to allocate from", (*net.IPNet)(&r.Subnet).String())
+		return fmt.Errorf("network %s too small to allocate from", (*net.IPNet)(&r.Subnet).String())
 	}
 
 	if len(r.Subnet.IP) != len(r.Subnet.Mask) {

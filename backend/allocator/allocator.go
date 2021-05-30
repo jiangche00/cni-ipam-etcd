@@ -21,9 +21,10 @@ import (
 	"os"
 	"strconv"
 
+	"cni-ipam-etcd/backend"
+
 	"github.com/containernetworking/cni/pkg/types/current"
 	"github.com/containernetworking/plugins/pkg/ip"
-	"github.com/jeremyxu2010/cni-ipam-etcd/backend"
 )
 
 type IPAllocator struct {
