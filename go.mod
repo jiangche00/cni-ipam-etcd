@@ -9,7 +9,6 @@ require (
 	github.com/coreos/etcd v3.3.13+incompatible
 	github.com/coreos/go-iptables v0.4.1 // indirect
 	github.com/gogo/protobuf v1.2.1 // indirect
-	github.com/jeremyxu2010/cni-ipam-etcd v0.0.0-20190702020231-51da631860e6
 	github.com/onsi/ginkgo v1.8.0 // indirect
 	github.com/onsi/gomega v1.5.0 // indirect
 	github.com/safchain/ethtool v0.0.0-20190326074333-42ed695e3de8 // indirect
