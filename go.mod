@@ -1,4 +1,6 @@
-module github.com/jeremyxu2010/cni-ipam-etcd
+module cni-ipam-etcd
+
+go 1.15
 
 require (
 	github.com/alexflint/go-filemutex v0.0.0-20171028004239-d358565f3c3f // indirect
